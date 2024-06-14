@@ -1,17 +1,17 @@
 import { Login } from './components/Login.jsx'
 import { Home } from './components/Home.jsx'
-import { useState  } from 'react'
+import React ,{ useState  } from 'react'
+
+export const userContext = React.createContext()
 
 export function App() {
-    const [user,setUser] = useState([])
+    const [user,setUser] = useState({})
 
     return (
-        <div className='App'>
-            {
-                !user.length>0
-                ?<Login setUser={setUser} />
-                :<Home user = {user[0]} setUser= {setUser}/>   
-            }
-        </div>
+        <userContext.Provider value={{user,setUser}}>
+            <div className='App'>
+                {!user.username ? <Login /> : <Home />}
+            </div>
+        </userContext.Provider>
     )
 }

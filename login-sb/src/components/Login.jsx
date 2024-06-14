@@ -1,8 +1,9 @@
 import './Login.css'
-import React, { useState } from 'react';
+import React, {useContext, useState } from 'react';
+import { userContext } from '../App';
 
-export function Login ({setUser}) {
-
+export function Login () {
+  const { setUser } = useContext(userContext);
   const [username,setUsername] = useState('')
   const [password,setPassword] = useState('')
   const [error, setError] = useState(false)
@@ -17,20 +18,16 @@ export function Login ({setUser}) {
 
   const handleSubmit = (e) =>{
     e.preventDefault()
-    if (username =='' || password ==''){
-      setError(true)
-      return
+    if (!username || password.length < 6) {
+      setError(true);
+      return;
     }
+  
+  
+    setError(false);
+    setUser({ username, password });
 
-    setError(false)
-
-    if (username && password.length >= 6) {
-      setUser([username, password]);
-    } else {
-      setError(true)
-    }
   }
-
     return (
         <div className='container'>
           <form className ='form-sb' onSubmit={handleSubmit}>
