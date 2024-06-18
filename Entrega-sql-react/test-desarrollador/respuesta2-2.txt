@@ -1,0 +1,6 @@
+Tengo varias opiniones sobre el select. Hay varios detalles que se pueden mejorar. Realiza la union de dos tablas INNER JOIN, en este caso DetalleVentas y CatalogoProductocon la condicion que el tipoProdId coincida en las dos tablas. 
+Adicionalmente hace un AND en el JOIN, seria mejor hacerlo en un WHERE para dejar la relacion de las tablas sola. A lo ultimo con esa condicion en el WHERE filtraria las filas en la tabla DetalleVenta donde IdRegistro coincida con el parametro.
+Los alias que le coloca a las columnas no son claros, se podria colocar nombres mas claros para saber con que datos se esta trabajando y es mucho mas facil de leer el codigo de consulta. 
+Se usa un parametro y esto puede ayudar a la seguridad y evitar inyeccion SQL.
+Se recomendaria tambien tener una mejor identacion para legibilidad del codigo.
+No se tiene claro que datos o que consulta se quiere realizar pero es bueno validar que tipo de JOIN se usa segun la consulta.
